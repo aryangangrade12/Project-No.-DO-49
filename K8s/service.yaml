@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: task-atlas-service
+spec:
+  type: NodePort        # Use NodePort for EC2 access
+  selector:
+    app: task-atlas
+  ports:
+  - port: 80            # internal cluster port
+    targetPort: 5000    # container port
+    nodePort: 31646     # fixed NodePort (30000-32767)
